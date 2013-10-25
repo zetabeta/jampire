@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ShadowTester : MonoBehaviour
 {
+	public int numberOfLights;
+
 	void Update()
 	{
 		int lightHits = 0;
@@ -22,5 +24,7 @@ public class ShadowTester : MonoBehaviour
 			GetComponentInChildren<Renderer>().material.color = Color.red;
 		else
 			GetComponentInChildren<Renderer>().material.color = Color.white;
+
+		numberOfLights = lightHits;
 	}
 }
