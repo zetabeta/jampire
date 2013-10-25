@@ -3,41 +3,35 @@ using System.Collections;
 
 public class CollisionDetection : MonoBehaviour
 {
-	
 	Vector3 pos;
 	Vector3 lastPosition;
 	bool collided = false;
-	
+
+	public bool MayBeMoved { get { return !collided; } }
+
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
 
 	}
-	
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
-		if (!collided) {
-			if (Input.GetKey ("space")) {
-				transform.Translate (Vector3.left * Time.deltaTime);
-				lastPosition = pos;
-				pos = transform.position;
-			}
-		}
-		
+		lastPosition = pos;
+		pos = transform.position;
 	}
 
-	void OnCollisionEnter ()
+	void OnCollisionEnter()
 	{
 		collided = true;
-		Debug.Log ("here");
+
 		transform.position = lastPosition;
 		pos = lastPosition;
 	}
-	
-	void OnCollisionExit ()
+
+	void OnCollisionExit()
 	{
 		collided = false;
 	}
-	
 }
