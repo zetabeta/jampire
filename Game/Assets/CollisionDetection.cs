@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DragObject : MonoBehaviour
+public class CollisionDetection : MonoBehaviour
 {
 	
 	Vector3 pos;

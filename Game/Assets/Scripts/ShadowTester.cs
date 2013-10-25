@@ -3,11 +3,6 @@ using System.Collections;
 
 public class ShadowTester : MonoBehaviour
 {
-	void Start()
-	{
-
-	}
-
 	void Update()
 	{
 		int lightHits = 0;
