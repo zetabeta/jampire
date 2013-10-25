@@ -1,2 +1,8 @@
 /Game/Temp
 /Game/Library
+
+/Game/*.csproj
+/Game/*.sln
+
+/Game/*.suo
+/Game/obj
