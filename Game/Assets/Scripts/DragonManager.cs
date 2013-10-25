@@ -34,7 +34,7 @@ public class DragonManager : MonoBehaviour
 				}
 				
 				
-				dragged.transform.Translate (currentPosition - lastPosition);
+				dragged.transform.position += (currentPosition - lastPosition);
 				lastPosition = currentPosition;
 			}
 			
