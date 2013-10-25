@@ -17,27 +17,27 @@ public class DragObject : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if(!collided){
-		if (Input.GetKey("space")){
-			transform.Translate(Vector3.left *Time.deltaTime);
-			lastPosition = pos;
-			pos = transform.position;
-		}
+		if (!collided) {
+			if (Input.GetKey ("space")) {
+				transform.Translate (Vector3.left * Time.deltaTime);
+				lastPosition = pos;
+				pos = transform.position;
+			}
 		}
 		
 	}
 
-	void OnCollisionEnter(){
+	void OnCollisionEnter ()
+	{
 		collided = true;
-		Debug.Log("here");
+		Debug.Log ("here");
 		transform.position = lastPosition;
 		pos = lastPosition;
 	}
 	
-	void OnCollisionExit(){
+	void OnCollisionExit ()
+	{
 		collided = false;
 	}
-	
-	
 	
 }
