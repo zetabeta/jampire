@@ -38,10 +38,7 @@ public class DragonManager : MonoBehaviour
 				if ((currentPosition - initialPosition).magnitude < 0.4f)
 					initialIdleTime += Time.deltaTime;
 				else
-				{
 					mode = Mode.Scroll;
-					Handheld.Vibrate();
-				}
 
 				if (initialIdleTime > 0.3f)
 				{
@@ -50,6 +47,9 @@ public class DragonManager : MonoBehaviour
 					{
 						dragged.GetComponent<Draggable>().IsBeingDragged = true;
 						mode = Mode.Drag;
+#if UNITY_ANDROID
+						Handheld.Vibrate();
+#endif
 					}
 				}
 			}
