@@ -1203,6 +1203,7 @@ Transform:
   m_Children:
   - {fileID: 1335567095}
   - {fileID: 1502503625}
+  - {fileID: 1370012709}
   m_Father: {fileID: 0}
 --- !u!114 &431336946
 MonoBehaviour:
@@ -3169,10 +3170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96048c8aa34b4684ea9aff4b48438018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 0
+  action: 4
   actionTarget: {fileID: 0}
   animationName: 
-  waitTime: 0
+  waitTime: 2
 --- !u!1 &1356543276
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,6 +3283,48 @@ Transform:
   m_LocalScale: {x: 1.00000012, y: 1, z: 1.00000012}
   m_Children: []
   m_Father: {fileID: 1926965948}
+--- !u!1 &1370012708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1370012709}
+  - 114: {fileID: 1370012710}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1370012709
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370012708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -9.56287766, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 431336945}
+--- !u!114 &1370012710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370012708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96048c8aa34b4684ea9aff4b48438018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: 1
+  actionTarget: {fileID: 0}
+  animationName: 
+  waitTime: 2
 --- !u!1001 &1382331377
 Prefab:
   m_ObjectHideFlags: 0
@@ -3795,9 +3838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96048c8aa34b4684ea9aff4b48438018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 0
-  actionTarget: {fileID: 0}
-  animationName: 
+  action: 2
+  actionTarget: {fileID: 1177012276}
+  animationName: fridge
   waitTime: 0
 --- !u!1 &1542615440
 GameObject:
