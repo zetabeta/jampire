@@ -9,6 +9,7 @@ public class PathState
 	public float progress;
 	public Vector3 position;
 	public float rotation;
+	public float targetRotation;
 	public float idleTime;
 }
 
@@ -25,11 +26,12 @@ public class Path : MonoBehaviour
 			state.nextNode = transform.GetChild(1);
 			state.invDistance = 1.0f / (state.nextNode.position - state.currentNode.position).magnitude;
 
-			state.rotation = Mathf.Asin((state.nextNode.position - state.currentNode.position).normalized.z) * Mathf.Rad2Deg + 90.0f;
+			state.targetRotation = Mathf.Asin((state.nextNode.position - state.currentNode.position).normalized.z) * Mathf.Rad2Deg + 90.0f;
 			if ((state.nextNode.position - state.currentNode.position).x >= 0)
-				state.rotation = 360.0f - state.rotation;
+				state.targetRotation = 360.0f - state.targetRotation;
 		}
 		state.position = getPositionForState(state);
+		state.rotation = state.targetRotation;
 		return state;
 	}
 
@@ -64,16 +66,23 @@ public class Path : MonoBehaviour
 			if (transform.childCount > state.index + 1)
 			{
 				state.nextNode = transform.GetChild(state.index + 1);
-				state.invDistance = 1.0f / (state.nextNode.position - state.currentNode.position).magnitude;
 
-				state.rotation = Mathf.Asin((state.nextNode.position - state.currentNode.position).normalized.z) * Mathf.Rad2Deg + 90.0f;
-				if ((state.nextNode.position - state.currentNode.position).x >= 0)
-					state.rotation = 360.0f - state.rotation;
+				float dist = (state.nextNode.position - state.currentNode.position).magnitude;
+
+				state.invDistance = 1.0f / dist;
+
+				if (dist > 0.1f)
+				{
+					state.targetRotation = Mathf.Asin((state.nextNode.position - state.currentNode.position).normalized.z) * Mathf.Rad2Deg + 90.0f;
+					if ((state.nextNode.position - state.currentNode.position).x >= 0)
+						state.targetRotation = 360.0f - state.targetRotation;
+				}
 			}
 			else
 				state.nextNode = null;
 		}
 
 		state.position = getPositionForState(state);
+		state.rotation = Mathf.MoveTowardsAngle(state.rotation, state.targetRotation, 180.0f * by);
 	}
 }

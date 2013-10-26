@@ -7,7 +7,6 @@ public class DragonManager : MonoBehaviour
 	Vector3 lastPosition;
 	Vector3 currentPosition;
 
-	// Update is called once per frame
 	void Update()
 	{
 		if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
@@ -35,6 +34,9 @@ public class DragonManager : MonoBehaviour
 								dragged = draggable;
 							}
 						}
+
+						if (dragged != null)
+							dragged.GetComponent<Draggable>().IsBeingDragged = true;
 					}
 					lastPosition = currentPosition;
 				}
@@ -42,7 +44,7 @@ public class DragonManager : MonoBehaviour
 				Vector3 move = (currentPosition - lastPosition);
 				if (dragged != null)
 				{
-					CollisionDetection cd = dragged.GetComponent<CollisionDetection>();
+					Draggable cd = dragged.GetComponent<Draggable>();
 					if (cd == null || cd.MayBeMoved)
 						dragged.transform.position += move;
 				}
@@ -56,6 +58,13 @@ public class DragonManager : MonoBehaviour
 
 				lastPosition = currentPosition;
 			}
+		}
+
+		if (Input.GetMouseButtonUp(0))
+		{
+			if (dragged != null)
+				dragged.GetComponent<Draggable>().IsBeingDragged = false;
+			dragged = null;
 		}
 	}
 }
