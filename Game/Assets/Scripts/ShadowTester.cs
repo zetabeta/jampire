@@ -16,6 +16,8 @@ public class ShadowTester : MonoBehaviour
 
 			if (Physics.Raycast(transform.position, lightSource.transform.position - transform.position, (transform.position - lightSource.transform.position).magnitude, 1 << LayerMask.NameToLayer("ShadowCasters")))
 				continue;
+			
+			Debug.DrawLine(transform.position,lightSource.transform.position);
 
 			++lightHits;
 		}
