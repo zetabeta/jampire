@@ -19,11 +19,6 @@ public class Vampire : MonoBehaviour
 
 	void Update()
 	{
-		if (pathState.nextNode == null){
-			Application.LoadLevel(Application.loadedLevel+1);
-			return;
-		}
-		
 		nextHitTestTime -= Time.deltaTime;
 		if (nextHitTestTime < 0)
 		{
@@ -45,6 +40,8 @@ public class Vampire : MonoBehaviour
 		path.Progress(pathState, Time.deltaTime);
 
 		transform.position = pathState.position;
+		//Debug.Log(pathState.rotation);
+		transform.rotation = Quaternion.Euler(0, pathState.rotation, 0);
 	}
 
 	void OnGUI()

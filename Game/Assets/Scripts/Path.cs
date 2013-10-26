@@ -8,6 +8,8 @@ public class PathState
 	public float invDistance;
 	public float progress;
 	public Vector3 position;
+	public float rotation;
+	public float idleTime;
 }
 
 public class Path : MonoBehaviour
@@ -16,10 +18,16 @@ public class Path : MonoBehaviour
 	{
 		PathState state = new PathState();
 		state.currentNode = transform.GetChild(0);
+		state.currentNode.GetComponent<Waypoint>().PlayAction(state);
+
 		if (transform.childCount > 1)
 		{
 			state.nextNode = transform.GetChild(1);
 			state.invDistance = 1.0f / (state.nextNode.position - state.currentNode.position).magnitude;
+
+			state.rotation = Mathf.Asin((state.nextNode.position - state.currentNode.position).normalized.z) * Mathf.Rad2Deg + 90.0f;
+			if ((state.nextNode.position - state.currentNode.position).x >= 0)
+				state.rotation = 360.0f - state.rotation;
 		}
 		state.position = getPositionForState(state);
 		return state;
@@ -38,16 +46,29 @@ public class Path : MonoBehaviour
 		if (state.nextNode == null)
 			return;
 
+		if (state.idleTime > 0)
+		{
+			state.idleTime -= by;
+			if (state.idleTime > 0)
+				return;
+		}
+
 		state.progress += by * state.invDistance;
 		if (state.progress >= 1.0f)
 		{
 			state.progress = 0;
 			state.currentNode = state.nextNode;
+			state.currentNode.GetComponent<Waypoint>().PlayAction(state);
 			++state.index;
+
 			if (transform.childCount > state.index + 1)
 			{
 				state.nextNode = transform.GetChild(state.index + 1);
 				state.invDistance = 1.0f / (state.nextNode.position - state.currentNode.position).magnitude;
+
+				state.rotation = Mathf.Asin((state.nextNode.position - state.currentNode.position).normalized.z) * Mathf.Rad2Deg + 90.0f;
+				if ((state.nextNode.position - state.currentNode.position).x >= 0)
+					state.rotation = 360.0f - state.rotation;
 			}
 			else
 				state.nextNode = null;
