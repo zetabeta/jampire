@@ -19,6 +19,11 @@ public class Vampire : MonoBehaviour
 
 	void Update()
 	{
+		if (pathState.nextNode == null){
+			Application.LoadLevel(Application.loadedLevel+1);
+			return;
+		}
+		
 		nextHitTestTime -= Time.deltaTime;
 		if (nextHitTestTime < 0)
 		{
