@@ -22,15 +22,18 @@ public class CollisionDetection : MonoBehaviour
 		pos = transform.position;
 	}
 
-	void OnCollisionEnter()
+	void OnCollisionEnter(Collision collision)
 	{
 		collided = true;
-
 		transform.position = lastPosition;
 		pos = lastPosition;
 	}
 
-	void OnCollisionExit()
+	void OnCollisionStay() {
+		
+	}
+	
+	void OnCollisionExit(Collision collision)
 	{
 		collided = false;
 	}

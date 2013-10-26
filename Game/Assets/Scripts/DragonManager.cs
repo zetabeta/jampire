@@ -32,7 +32,6 @@ public class DragonManager : MonoBehaviour
 							tempDistance = distance;
 							dragged = draggable;
 						}
-						//Debug.Log (distance);
 						lastPosition = currentPosition;
 					}
 					dragged.renderer.material.color = Color.red;
@@ -51,6 +50,8 @@ public class DragonManager : MonoBehaviour
 		if (Input.GetMouseButtonUp(0))
 		{
 			dragged.renderer.material.color = Color.gray;
+			dragged.rigidbody.velocity = Vector3.zero;
+
 		}
 	}
 
