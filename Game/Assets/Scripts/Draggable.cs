@@ -16,7 +16,8 @@ public class Draggable : MonoBehaviour
 		set
 		{
 			isBeingDragged = value;
-			collider.enabled = !isBeingDragged;
+			foreach (Collider collider in GetComponentsInChildren<Collider>())
+				collider.enabled = !isBeingDragged;
 		}
 	}
 
