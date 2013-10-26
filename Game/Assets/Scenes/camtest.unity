@@ -334,16 +334,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 431336944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96211acefbccc5646a0f0391c8fb36a2, type: 3}
+  m_Script: {fileID: 11500000, guid: bae7ce3282f4b437f8b36b2142ff372a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
 --- !u!1 &521833627
 GameObject:
@@ -500,7 +492,7 @@ AudioSource:
   m_GameObject: {fileID: 650914332}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: f15cdb7ec66101c44a2f888861acbaa7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fc658a9ae62f8495d8e332e461e8a87f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -625,16 +617,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 713704139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca0fd0fb88c61ff4b9f78dd256d3cc7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 773cc20fc87ac4e6381e3cd9cace6ca2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
   m_EditorClassIdentifier: 
   numberOfLights: 0
 --- !u!114 &713704142
@@ -645,20 +629,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 713704139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8586cc59791ad6a4da37889356d503e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 627d7bc8627274a688764631c5638e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
-  m_EditorClassIdentifier: 
   energy: 20
-  path: {fileID: 431336946}
-  buuurn: {fileID: 1188782883}
+  path: {fileID: 0}
+  buuurn: {fileID: 0}
 --- !u!1 &1098745081
 GameObject:
   m_ObjectHideFlags: 0
