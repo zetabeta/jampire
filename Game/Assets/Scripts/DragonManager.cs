@@ -6,58 +6,70 @@ public class DragonManager : MonoBehaviour
 	GameObject dragged;
 	Vector3 lastPosition;
 	Vector3 currentPosition;
+	Vector3 initialPosition;
+	float initialIdleTime;
+	Mode mode;
+
+	enum Mode
+	{
+		None,
+		PreScroll,
+		Scroll,
+		Drag,
+	}
 
 	void Update()
 	{
-		if (Input.GetMouseButton(0) || Input.GetMouseButton(1))
+		if (Input.GetMouseButton(0))
 		{
-			Ray mousePoint = Camera.main.ScreenPointToRay(Input.mousePosition);
-
 			RaycastHit info;
-
+			Ray mousePoint = Camera.main.ScreenPointToRay(Input.mousePosition);
 			if (Physics.Raycast(mousePoint, out info, float.PositiveInfinity, 1 << LayerMask.NameToLayer("GroundPlane")))
-			{
-				Vector3 intersectionPoint = info.point;
 				currentPosition = info.point;
-				float tempDistance = float.PositiveInfinity;
 
-				if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
-				{
-					if (Input.GetMouseButtonDown(0))
-					{
-						foreach (GameObject draggable in GameObject.FindGameObjectsWithTag("Draggable"))
-						{
-							float distance = Vector3.Distance(intersectionPoint, draggable.transform.position);
-							if (distance < tempDistance)
-							{
-								tempDistance = distance;
-								dragged = draggable;
-							}
-						}
-
-						if (dragged != null)
-							dragged.GetComponent<Draggable>().IsBeingDragged = true;
-					}
-					lastPosition = currentPosition;
-				}
-
-				Vector3 move = (currentPosition - lastPosition);
-				if (dragged != null)
-				{
-					Draggable cd = dragged.GetComponent<Draggable>();
-					if (cd == null || cd.MayBeMoved)
-						dragged.transform.position += move;
-				}
-				else if (Input.GetMouseButton(1))
-				{
-					move.x = 0;
-
-					Camera.main.transform.position -= move;
-					currentPosition -= move;
-				}
-
-				lastPosition = currentPosition;
+			if (mode == Mode.None)
+			{
+				mode = Mode.PreScroll;
+				initialPosition = lastPosition = currentPosition;
+				initialIdleTime = 0;
 			}
+			else if (mode == Mode.PreScroll)
+			{
+				if ((currentPosition - initialPosition).magnitude < 0.4f)
+					initialIdleTime += Time.deltaTime;
+				else
+				{
+					mode = Mode.Scroll;
+					Handheld.Vibrate();
+				}
+
+				if (initialIdleTime > 0.3f)
+				{
+					dragged = selectObject(currentPosition);
+					if (dragged != null)
+					{
+						dragged.GetComponent<Draggable>().IsBeingDragged = true;
+						mode = Mode.Drag;
+					}
+				}
+			}
+
+			Vector3 move = (currentPosition - lastPosition);
+			if (mode == Mode.Drag)
+			{
+				Draggable cd = dragged.GetComponent<Draggable>();
+				if (cd == null || cd.MayBeMoved)
+					dragged.transform.position += move;
+			}
+			else if (mode == Mode.Scroll || mode == Mode.PreScroll)
+			{
+				move.x = 0;
+
+				Camera.main.transform.position -= move;
+				currentPosition -= move;
+			}
+
+			lastPosition = currentPosition;
 		}
 
 		if (Input.GetMouseButtonUp(0))
@@ -65,6 +77,25 @@ public class DragonManager : MonoBehaviour
 			if (dragged != null)
 				dragged.GetComponent<Draggable>().IsBeingDragged = false;
 			dragged = null;
+			mode = Mode.None;
 		}
+	}
+
+	private GameObject selectObject(Vector3 currentPosition)
+	{
+		float tempDistance = float.PositiveInfinity;
+		GameObject toDrag = null;
+
+		foreach (GameObject draggable in GameObject.FindGameObjectsWithTag("Draggable"))
+		{
+			float distance = Vector3.Distance(currentPosition, draggable.transform.position);
+			if (distance < tempDistance)
+			{
+				tempDistance = distance;
+				toDrag = draggable;
+			}
+		}
+
+		return toDrag;
 	}
 }
