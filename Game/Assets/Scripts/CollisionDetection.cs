@@ -19,7 +19,6 @@ public class CollisionDetection : MonoBehaviour
 	void Update ()
 	{
 		if (!collided) {
-			Debug.Log ("update");
 			lastValidPosition = pos;
 			pos = transform.position;
 		}

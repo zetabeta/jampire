@@ -7,7 +7,6 @@ public class DragonManager : MonoBehaviour
 	Vector3 lastPosition;
 	Vector3 currentPosition;
 
-
 	// Update is called once per frame
 	void Update()
 	{
@@ -34,7 +33,6 @@ public class DragonManager : MonoBehaviour
 						}
 						lastPosition = currentPosition;
 					}
-					dragged.renderer.material.color = Color.red;
 				}
 
 				CollisionDetection cd = dragged.GetComponent<CollisionDetection>();
@@ -46,14 +44,5 @@ public class DragonManager : MonoBehaviour
 			}
 
 		}
-
-		if (Input.GetMouseButtonUp(0))
-		{
-			dragged.renderer.material.color = Color.gray;
-			//dragged.rigidbody.velocity = Vector3.zero;
-
-		}
 	}
-
-
 }
