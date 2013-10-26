@@ -50,7 +50,7 @@ public class DragonManager : MonoBehaviour
 		if (Input.GetMouseButtonUp(0))
 		{
 			dragged.renderer.material.color = Color.gray;
-			dragged.rigidbody.velocity = Vector3.zero;
+			//dragged.rigidbody.velocity = Vector3.zero;
 
 		}
 	}
