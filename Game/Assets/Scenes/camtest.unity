@@ -149,8 +149,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 174901585}
   - 33: {fileID: 174901584}
-  - 64: {fileID: 174901583}
   - 23: {fileID: 174901582}
+  - 65: {fileID: 174901583}
   m_Layer: 9
   m_Name: Quad
   m_TagString: Untagged
@@ -176,8 +176,8 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
---- !u!64 &174901583
-MeshCollider:
+--- !u!65 &174901583
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -186,9 +186,8 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  m_Size: {x: 6, y: 6, z: 6.1232336e-17}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &174901584
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -830,7 +829,7 @@ GameObject:
   - 23: {fileID: 1241840249}
   - 114: {fileID: 1241840253}
   - 54: {fileID: 1241840254}
-  - 143: {fileID: 1241840250}
+  - 65: {fileID: 1241840250}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Draggable
@@ -856,19 +855,17 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
---- !u!143 &1241840250
-CharacterController:
+--- !u!65 &1241840250
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1241840248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.00000012
-  m_Radius: .5
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: 0
+  m_Size: {x: 1, y: 1.00000012, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &1241840251
 MeshFilter:
@@ -1221,7 +1218,7 @@ GameObject:
   - 23: {fileID: 2141108261}
   - 114: {fileID: 2141108265}
   - 54: {fileID: 2141108266}
-  - 143: {fileID: 2141108262}
+  - 65: {fileID: 2141108262}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Draggable
@@ -1247,20 +1244,18 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
---- !u!143 &2141108262
-CharacterController:
+--- !u!65 &2141108262
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141108260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.00000036
-  m_Radius: .500000298
-  m_SlopeLimit: 45
-  m_StepOffset: .300000012
-  m_SkinWidth: .0799999982
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.00000036, y: 1.00000036, z: 1}
+  m_Center: {x: 1.1920929e-07, y: 0, z: 0}
 --- !u!33 &2141108263
 MeshFilter:
   m_ObjectHideFlags: 0
