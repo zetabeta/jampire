@@ -6,3 +6,12 @@
 
 /Game/*.suo
 /Game/obj
+
+/Game/*.pidb
+/Game/*.pidb
+/Game/*.pidb
+/Game/*.unityproj
+/Game/*.unityproj
+
+/Game/*.userprefs
+/Game/*.apk
